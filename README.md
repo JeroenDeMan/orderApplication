@@ -16,7 +16,7 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 **Must-Have stories:**
 - Story 0 (your project setup + other technical requirements)
 - Story 1 [:heavy_check_mark:]
-- Story 2
+- Story 2 [:heavy_check_mark:]
 - Story 3
 - Story 7
 - Story 8
@@ -75,7 +75,7 @@ As an unregistered user I want to create a customer account so I can become reco
     - Address
     - Phone number
 
-### Story 2: Add an item
+### Story 2: Add an item [:heavy_check_mark:]
 As an admin user I want to add an item so I can expand the list of available items.
 - When adding an `Item`, the following data should be provided
     - Name
