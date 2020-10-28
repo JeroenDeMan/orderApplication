@@ -2,14 +2,12 @@ package be.switchfully.customer.service;
 
 import be.switchfully.customer.business.entity.Address;
 import be.switchfully.customer.business.entity.Customer;
-import be.switchfully.customer.business.repository.CustomerRepo;
+import be.switchfully.customer.business.repository.CustomerRepository;
 import be.switchfully.customer.service.dto.CustomerDTO;
 import be.switchfully.customer.service.mapper.CustomerMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerServiceTest {
     private Address address;
@@ -31,7 +29,7 @@ class CustomerServiceTest {
         customerDTO.setCity(customer.getAddress().getCity());
         customerDTO.setPostalCode(customer.getAddress().getPostalCode());
 
-        customerService = new CustomerService(new CustomerRepo(), new CustomerMapper());
+        customerService = new CustomerService(new CustomerRepository(), new CustomerMapper());
     }
 
     @Test

@@ -9,11 +9,11 @@ import java.util.Map;
 
 @Repository
 @Data
-public class CustomerRepo {
+public class CustomerRepository {
 
     private Map<String, Customer> customers;
 
-    public CustomerRepo() {
+    public CustomerRepository() {
         this.customers = new HashMap<>();
     }
 }
