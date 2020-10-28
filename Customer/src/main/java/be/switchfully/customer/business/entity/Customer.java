@@ -1,5 +1,6 @@
 package be.switchfully.customer.business.entity;
 
+import be.switchfully.customer.util.EmailValidation;
 import lombok.Data;
 
 import java.util.Objects;
@@ -20,9 +21,14 @@ public class Customer {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mailAddress = mailAddress;
         this.phoneNumber = phoneNumber;
         this.address = address;
+
+        isMailAddressValid(mailAddress);
+    }
+
+    private void isMailAddressValid(String mailAddress){
+        if (EmailValidation.isEmailValid(mailAddress)) this.mailAddress = mailAddress;
     }
 
     @Override
