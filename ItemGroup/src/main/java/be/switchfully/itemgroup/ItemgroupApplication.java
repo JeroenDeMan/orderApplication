@@ -1,4 +1,4 @@
-package be.switchfully.itemgroup.itemgroup;
+package be.switchfully.itemgroup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

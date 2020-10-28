@@ -1,5 +1,6 @@
 package be.switchfully.item.api;
 
+import be.switchfully.item.business.entity.Item;
 import be.switchfully.item.service.ItemService;
 import be.switchfully.item.service.dto.AdminDTO;
 import be.switchfully.item.service.dto.ItemDTO;
@@ -23,6 +24,12 @@ public class ItemController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public String logIn(@PathVariable String id){
         return itemService.logIn(id);
+    }
+
+    @GetMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ItemDTO getItemById(@PathVariable String id){
+        return itemService.getItemById(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

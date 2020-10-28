@@ -1,4 +1,4 @@
-package be.switchfully.itemgroup.itemgroup;
+package be.switchfully.itemgroup;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
