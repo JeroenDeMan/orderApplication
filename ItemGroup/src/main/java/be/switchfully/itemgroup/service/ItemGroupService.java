@@ -38,9 +38,15 @@ public class ItemGroupService {
         return itemGroup;
     }
 
+    private void calculateGroupPrice(ItemGroup itemGroup, ItemGroupDTO itemGroupDTO) {
+        itemGroup.setGroupPrice(itemGroupDTO.getItemPrice() * itemGroup.getAmount());
+
+    }
+
     public ItemGroupDTO addItemGroup(ItemGroupDTO itemGroupDTO) {
         ItemGroupDTO itemGroupResult = retrieveItem(itemGroupDTO);
         ItemGroup itemGroup = setShippingDate(itemGroupResult.getItemStockAmount(), itemGroupMapper.toEntity(itemGroupResult));
+        calculateGroupPrice(itemGroup, itemGroupDTO);
 
         itemGroupRepository.getItemGroups().put(itemGroup.getGroupId(), itemGroup);
 

@@ -1,8 +1,6 @@
-package be.switchfully.itemgroup.service.dto;
+package be.switchfully.order.service.dto;
 
 import lombok.Data;
-
-import java.time.LocalDate;
 
 @Data
 public class ItemGroupDTO {
@@ -11,8 +9,6 @@ public class ItemGroupDTO {
     private String shippingDate;
     private int amount;
     private double groupPrice;
-    private String itemId;
     private String itemName;
-    private double itemPrice;
-    private int itemStockAmount;
+
 }

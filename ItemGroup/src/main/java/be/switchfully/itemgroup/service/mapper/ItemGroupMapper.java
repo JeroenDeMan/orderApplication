@@ -20,6 +20,7 @@ public class ItemGroupMapper {
         itemGroupDTO.setItemId(itemGroup.getItemId());
         itemGroupDTO.setAmount(itemGroup.getAmount());
         itemGroupDTO.setShippingDate(itemGroup.getShippingDate().toString());
+        itemGroupDTO.setGroupPrice(itemGroup.getGroupPrice());
 
         return itemGroupDTO;
     }

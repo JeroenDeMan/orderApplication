@@ -25,4 +25,8 @@ public class CustomerService {
 
         return customerMapper.toDTO(customer);
     }
+
+    public CustomerDTO getCustomerById(String id) {
+        return customerMapper.toDTO(customerRepository.getCustomers().get(id));
+    }
 }

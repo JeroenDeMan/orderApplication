@@ -14,6 +14,7 @@ public class ItemGroup {
     private final String itemId;
     private int amount;
     private LocalDate shippingDate;
+    private double groupPrice;
 
     public ItemGroup(String itemId, int amount) {
         this.groupId = UUID.randomUUID().toString();
