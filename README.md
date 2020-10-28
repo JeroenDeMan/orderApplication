@@ -15,7 +15,7 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 
 **Must-Have stories:**
 - Story 0 (your project setup + other technical requirements)
-- Story 1
+- Story 1 [:heavy_check_mark:]
 - Story 2
 - Story 3
 - Story 7
@@ -66,7 +66,7 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 
 The functional requirements are written down as stories. 
 
-### Story 1: Create a customer account [heavy-check-mark]
+### Story 1: Create a customer account [:heavy_check_mark:]
 As an unregistered user I want to create a customer account so I can become recognized within the system.
 - Upon creation of a customer, the following data should be provided:
     - First name
