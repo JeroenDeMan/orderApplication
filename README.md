@@ -18,8 +18,8 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 - Story 1 [:heavy_check_mark:]
 - Story 2 [:heavy_check_mark:]
 - Story 3 [:heavy_check_mark:]
-- Story 7
-- Story 8
+- Story 7 [:heavy_check_mark:]
+- Story 8 [:heavy_check_mark:]
 
 **Nice-To-Have stories:**
 - Story 4
@@ -120,11 +120,11 @@ As a customer I want to be able to reorder an existing order so I can quickly pl
 - A customer can only reorder one of his own orders.
 - The actual price of the item should be used, not the price the item had in the existing order.
 
-### Story 7: View all customers 
+### Story 7: View all customers [:heavy_check_mark:]
 As an admin user I want to view all customers.
 - List all customers known by the system
 
-### Story 8: View a single customer
+### Story 8: View a single customer [:heavy_check_mark:]
 As an admin user I want to view the details of a single customers.
 - Based on the customer identifier
 
