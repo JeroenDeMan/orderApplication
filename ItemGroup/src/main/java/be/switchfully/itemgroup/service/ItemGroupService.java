@@ -2,6 +2,7 @@ package be.switchfully.itemgroup.service;
 
 import be.switchfully.itemgroup.business.entity.ItemGroup;
 import be.switchfully.itemgroup.business.repository.ItemGroupRepository;
+import be.switchfully.itemgroup.exceptions.ItemGroupNotFoundException;
 import be.switchfully.itemgroup.service.dto.ItemDTO;
 import be.switchfully.itemgroup.service.dto.ItemGroupDTO;
 import be.switchfully.itemgroup.service.mapper.ItemGroupMapper;
@@ -31,14 +32,14 @@ public class ItemGroupService {
         return itemGroupDTO;
     }
 
-    private ItemGroup setShippingDate (int stockAmount, ItemGroup itemGroup) {
+    public ItemGroup setShippingDate (int stockAmount, ItemGroup itemGroup) {
         if ((stockAmount - itemGroup.getAmount()) > 0) itemGroup.itemInStockSetShipping();
         else itemGroup.itemOutOfStockSetShipping();
 
         return itemGroup;
     }
 
-    private void calculateGroupPrice(ItemGroup itemGroup, ItemGroupDTO itemGroupDTO) {
+    public void calculateGroupPrice(ItemGroup itemGroup, ItemGroupDTO itemGroupDTO) {
         itemGroup.setGroupPrice(itemGroupDTO.getItemPrice() * itemGroup.getAmount());
 
     }
@@ -55,6 +56,7 @@ public class ItemGroupService {
     }
 
     public ItemGroupDTO getItemGroupById(String id) {
+        if(!itemGroupRepository.getItemGroups().containsKey(id)) throw new ItemGroupNotFoundException(id);
         ItemGroupDTO result = itemGroupMapper.toDTO(itemGroupRepository.getItemGroups().get(id));
         return retrieveItem(result);
     }

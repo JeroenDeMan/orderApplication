@@ -2,6 +2,8 @@ package be.switchfully.item.service;
 
 import be.switchfully.item.business.entity.Item;
 import be.switchfully.item.business.repository.ItemRepository;
+import be.switchfully.item.exceptions.NotAuthorizedException;
+import be.switchfully.item.service.dto.AdminDTO;
 import be.switchfully.item.service.dto.ItemDTO;
 import be.switchfully.item.service.mapper.ItemMapper;
 import org.junit.jupiter.api.Assertions;
@@ -29,7 +31,21 @@ class ItemServiceTest {
 
     @Test
     public void giveANewItem_isSaveAndReturnsSameItemInfo(){
+        itemService.setAdmin(new AdminDTO());
         Assertions.assertEquals(itemDTO.getName(), itemService.addNewItem(itemDTO).getName());
     }
+
+    @Test
+    public void whenAdminIsNotLoggedIn_AddingANewItemThrowsNotAuthorizeException() {
+        Assertions.assertThrows(NotAuthorizedException.class, () -> itemService.addNewItem(itemDTO));
+    }
+
+    @Test
+    public void retrievingAItemById_ReturnsExpectedItem() {
+        itemService.setAdmin(new AdminDTO());
+        ItemDTO expectedResult = itemService.addNewItem(itemDTO);
+        Assertions.assertEquals(expectedResult.getName(), itemService.getItemById(expectedResult.getId()).getName());
+    }
+
 
 }
