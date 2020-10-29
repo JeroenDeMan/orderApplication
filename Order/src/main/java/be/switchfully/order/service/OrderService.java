@@ -48,9 +48,9 @@ public class OrderService {
         return orderDTO;
     }
 
-    private OrderDTO calculatePrice(OrderDTO orderDTO) {
+    public OrderDTO calculatePrice(OrderDTO orderDTO) {
         orderDTO.setTotalPrice(orderDTO.getItemGroups().stream().mapToDouble(ItemGroupDTO::getGroupPrice).sum());
-
+        orderRepository.getOrders().get(orderDTO.getId()).calculatePrice(orderDTO.getTotalPrice());
         return orderDTO;
     }
 

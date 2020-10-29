@@ -18,6 +18,10 @@ public class Order {
         this.costumerId = costumerId;
     }
 
+    public void calculatePrice(double totalPrice) {
+        setTotalPrice(totalPrice);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
