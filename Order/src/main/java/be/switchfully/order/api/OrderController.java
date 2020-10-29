@@ -2,6 +2,7 @@ package be.switchfully.order.api;
 
 import be.switchfully.order.service.OrderService;
 
+import be.switchfully.order.service.dto.ItemGroupKeysDTO;
 import be.switchfully.order.service.dto.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,7 @@ public class OrderController {
 
     @PostMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void addGroupItems(@PathVariable String id, @RequestBody List<String> itemGroupKeys) {
-        orderService.addGroupItems(id, itemGroupKeys);
+    public void addGroupItems(@PathVariable String id, @RequestBody List<String> itemGroupKeysDTO) {
+        orderService.addGroupItems(id, itemGroupKeysDTO);
     }
 }

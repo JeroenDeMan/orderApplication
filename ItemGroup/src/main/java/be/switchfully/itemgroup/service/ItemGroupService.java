@@ -53,4 +53,9 @@ public class ItemGroupService {
         return retrieveItem(itemGroupMapper.toDTO(itemGroup));
 
     }
+
+    public ItemGroupDTO getItemGroupById(String id) {
+        ItemGroupDTO result = itemGroupMapper.toDTO(itemGroupRepository.getItemGroups().get(id));
+        return retrieveItem(result);
+    }
 }

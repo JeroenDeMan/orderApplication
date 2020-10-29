@@ -23,4 +23,10 @@ public class ItemGroupController {
     public ItemGroupDTO creatItemGroup(@RequestBody ItemGroupDTO itemGroupDTO) {
         return itemGroupService.addItemGroup(itemGroupDTO);
     }
+
+    @GetMapping(path = "/{id}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
+    public ItemGroupDTO getItemGroupById(@PathVariable String id) {
+        return itemGroupService.getItemGroupById(id);
+    }
 }

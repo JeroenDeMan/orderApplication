@@ -17,7 +17,7 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 - Story 0 (your project setup + other technical requirements)
 - Story 1 [:heavy_check_mark:]
 - Story 2 [:heavy_check_mark:]
-- Story 3
+- Story 3 [:heavy_check_mark:]
 - Story 7
 - Story 8
 
@@ -83,7 +83,7 @@ As an admin user I want to add an item so I can expand the list of available ite
     - Price
     - Amount (stock)
 
-### Story 3: Order items
+### Story 3: Order items [:heavy_check_mark:]
 As a customer I want to order one or more items.
 - An `Order` contains one or more **item groups**
 - An `item group` contains a selected item (id), an amount, and a shipping date. 
@@ -120,7 +120,7 @@ As a customer I want to be able to reorder an existing order so I can quickly pl
 - A customer can only reorder one of his own orders.
 - The actual price of the item should be used, not the price the item had in the existing order.
 
-### Story 7: View all customers
+### Story 7: View all customers 
 As an admin user I want to view all customers.
 - List all customers known by the system
 

@@ -29,13 +29,13 @@ public class OrderService {
 
     private OrderDTO addCustomerName (OrderDTO orderDTO) {
         RestTemplate rtCustomer = new RestTemplate();
-        CustomerDTO customerDTO = rtCustomer.getForObject(COSTUMER_URL + orderDTO.getCostumerId(), CustomerDTO.class);
+        CustomerDTO customerDTO = rtCustomer.getForObject(COSTUMER_URL + orderDTO.getCustomerId(), CustomerDTO.class);
         orderDTO.setCustomerName(customerDTO.getFirstName() + " " + customerDTO.getLastName());
 
         return orderDTO;
     }
 
-    private OrderDTO addItemGroup (OrderDTO orderDTO) {
+    private OrderDTO addItemGroupInformation(OrderDTO orderDTO) {
         RestTemplate rtItemGroup = new RestTemplate();
         Order order = orderRepository.getOrders().get(orderDTO.getId());
 
@@ -48,24 +48,35 @@ public class OrderService {
         return orderDTO;
     }
 
+    private OrderDTO calculatePrice(OrderDTO orderDTO) {
+        orderDTO.setTotalPrice(orderDTO.getItemGroups().stream().mapToDouble(ItemGroupDTO::getGroupPrice).sum());
+
+        return orderDTO;
+    }
+
+    private OrderDTO addPriceItemGroupsAndCustomer(OrderDTO orderDTO){
+        addCustomerName(orderDTO);
+        addItemGroupInformation(orderDTO);
+        calculatePrice(orderDTO);
+        return orderDTO;
+    }
+
     public List<OrderDTO> getAllOrders() {
         return orderRepository.getOrders()
                 .values()
                 .stream()
                 .map(order -> orderMapper.toDTO(order))
-                .map(this::addItemGroup)
-                .map(this::addCustomerName)
+                .map(this::addPriceItemGroupsAndCustomer)
                 .collect(Collectors.toList());
     }
 
     public OrderDTO createOrder (OrderDTO orderDTO) {
         Order order = orderMapper.toEntity(orderDTO);
-        System.out.println(order);
         orderRepository.getOrders().put(order.getId(), order);
+
         OrderDTO orderDTOResult = orderMapper.toDTO(order);
-        addItemGroup(orderDTOResult);
-        addCustomerName(orderDTOResult);
-        return orderDTO;
+
+        return addPriceItemGroupsAndCustomer(orderDTOResult);
     }
 
     public void addGroupItems (String id, List<String> itemGroupKeys) {

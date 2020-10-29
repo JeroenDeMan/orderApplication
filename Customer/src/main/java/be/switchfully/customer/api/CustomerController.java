@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/api/customers")
 public class CustomerController {
@@ -17,6 +19,18 @@ public class CustomerController {
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping(path = "/login/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public String logIn(@PathVariable String id) {
+        return customerService.logIn(id);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<CustomerDTO> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -11,7 +11,7 @@ import java.util.Set;
 public class OrderDTO {
 
     private String id;
-    private String costumerId;
+    private String customerId;
     private String customerName;
     private List<ItemGroupDTO> itemGroups;
     private double totalPrice;
