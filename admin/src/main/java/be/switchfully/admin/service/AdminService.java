@@ -1,6 +1,7 @@
 package be.switchfully.admin.service;
 
 import be.switchfully.admin.business.repository.AdminRepository;
+import be.switchfully.admin.exceptions.AdminNotFoundException;
 import be.switchfully.admin.service.dto.AdminDTO;
 import be.switchfully.admin.service.mapper.AdminMapper;
 import lombok.Data;
@@ -32,6 +33,7 @@ public class AdminService {
     }
 
     public AdminDTO getAdminById(String id) {
+        if(!adminRepository.getAdmins().containsKey(id)) throw new AdminNotFoundException(id);
         return adminMapper.toDTO(adminRepository.getAdmins().get(id));
     }
 }
