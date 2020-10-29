@@ -2,6 +2,7 @@ package be.switchfully.order.service.mapper;
 
 import be.switchfully.order.business.entity.Order;
 import be.switchfully.order.service.dto.OrderDTO;
+import be.switchfully.order.service.dto.OrderDTOCustomer;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,4 +20,5 @@ public class OrderMapper {
 
         return orderDTO;
     }
+
 }

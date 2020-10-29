@@ -37,4 +37,10 @@ public class ItemController {
     public ItemDTO addNewItem(@RequestBody ItemDTO itemDTO) {
         return itemService.addNewItem(itemDTO);
     }
+
+    @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ItemDTO updateItem(@PathVariable String id, @RequestBody ItemDTO itemDTO) {
+        return itemService.updateItem(id, itemDTO);
+    }
 }

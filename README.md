@@ -22,8 +22,8 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 - Story 8 [:heavy_check_mark:]
 
 **Nice-To-Have stories:**
-- Story 4
-- Story 5
+- Story 4 [:heavy_check_mark:]
+- Story 5 [:heavy_check_mark:]
 - Story 6
 - Story 9
 - Story 10
@@ -95,7 +95,7 @@ As a customer I want to order one or more items.
     - Tip: The the price of the item can change over time... What implications might this have?
 - Obviously, we also need to keep track of who made the order (it has to be a known customer)
 
-### Story 4: Update an item
+### Story 4: Update an item [:heavy_check_mark:]
 As an admin user I want to update an item so I can keep my list of available items up to date.
 - When updating an Item, the following data should be provided
     - Name
@@ -103,7 +103,7 @@ As an admin user I want to update an item so I can keep my list of available ite
     - Price
     - Amount (stock)
 
-### Story 5: View report of orders
+### Story 5: View report of orders [:heavy_check_mark:]
 As a customer I want to see a report of all my orders so I can get an overview of what I ordered and how much it cost.
 - The report should contain per order:
     - The id(entifier) of the order

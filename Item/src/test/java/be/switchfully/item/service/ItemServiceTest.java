@@ -47,5 +47,18 @@ class ItemServiceTest {
         Assertions.assertEquals(expectedResult.getName(), itemService.getItemById(expectedResult.getId()).getName());
     }
 
+    @Test
+    public void updateAItem_changesTheItemIDataBase() {
+        itemService.setAdmin(new AdminDTO());
+        ItemDTO item = itemService.addNewItem(itemDTO);
+
+        itemDTO.setName("new name");
+        itemDTO.setDescription("changed it");
+        itemDTO.setPrice(2.5);
+        itemDTO.setAmount(15);
+
+        Assertions.assertEquals("new name", itemService.updateItem(item.getId(), itemDTO).getName());
+    }
+
 
 }

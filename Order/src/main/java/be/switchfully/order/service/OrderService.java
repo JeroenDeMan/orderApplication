@@ -5,6 +5,7 @@ import be.switchfully.order.business.repository.OrderRepository;
 import be.switchfully.order.service.dto.CustomerDTO;
 import be.switchfully.order.service.dto.ItemGroupDTO;
 import be.switchfully.order.service.dto.OrderDTO;
+import be.switchfully.order.service.dto.OrderDTOCustomer;
 import be.switchfully.order.service.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,7 @@ public class OrderService {
     private OrderDTO addCustomerName (OrderDTO orderDTO) {
         RestTemplate rtCustomer = new RestTemplate();
         CustomerDTO customerDTO = rtCustomer.getForObject(COSTUMER_URL + orderDTO.getCustomerId(), CustomerDTO.class);
-        orderDTO.setCustomerName(customerDTO.getFirstName() + " " + customerDTO.getLastName());
-
+       orderDTO.setCustomerName (customerDTO.getFirstName() + " " + customerDTO.getLastName());
         return orderDTO;
     }
 
@@ -81,5 +81,23 @@ public class OrderService {
 
     public void addGroupItems (String id, List<String> itemGroupKeys) {
         orderRepository.getOrders().get(id).getItemGroups().addAll(itemGroupKeys);
+    }
+
+    public OrderDTOCustomer getOrdersForSpecificCustomer(String id){
+        OrderDTOCustomer result = new OrderDTOCustomer();
+
+        List<OrderDTO> orders = orderRepository.getOrders().values()
+                .stream()
+                .filter(order -> order.getCostumerId().equals(id))
+                .map(order -> orderMapper.toDTO(order))
+                .map(this::addPriceItemGroupsAndCustomer)
+                .collect(Collectors.toList());
+
+        //result.setCustomerName(addCustomerName(id));
+        result.getOrderList().addAll(orders);
+        result.setTotalPrice(orders.stream().mapToDouble(OrderDTO::getTotalPrice ).sum());
+
+        return result;
+
     }
 }

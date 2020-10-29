@@ -11,6 +11,7 @@
         <module name="Item" />
         <module name="admin" />
         <module name="ItemGroup" />
+        <module name="store" />
         <module name="Customer" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="Item" target="11" />
       <module name="ItemGroup" target="11" />
       <module name="Order" target="11" />
+      <module name="store" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,6 +31,7 @@
       <module name="ItemGroup" options="-parameters" />
       <module name="Order" options="-parameters" />
       <module name="admin" options="-parameters" />
+      <module name="store" options="-parameters" />
     </option>
   </component>
 </project>

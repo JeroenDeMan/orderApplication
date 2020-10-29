@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ItemGroupService {
     public static final String ITEM_URL = "http://localhost:9090/api/items/";
@@ -59,5 +62,14 @@ public class ItemGroupService {
         if(!itemGroupRepository.getItemGroups().containsKey(id)) throw new ItemGroupNotFoundException(id);
         ItemGroupDTO result = itemGroupMapper.toDTO(itemGroupRepository.getItemGroups().get(id));
         return retrieveItem(result);
+    }
+
+    public List<ItemGroupDTO> getAllItemGroups() {
+        return itemGroupRepository.getItemGroups()
+                .values()
+                .stream()
+                .map(itemGroup -> itemGroupMapper.toDTO(itemGroup))
+                .map(this::retrieveItem)
+                .collect(Collectors.toList());
     }
 }

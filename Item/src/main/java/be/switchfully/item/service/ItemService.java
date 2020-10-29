@@ -42,6 +42,7 @@ public class ItemService {
     public ItemDTO addNewItem(ItemDTO itemDTO) {
         if (!isAdminLoggedIn()) throw new NotAuthorizedException("add a new item");
         Item item = itemMapper.toEntity(itemDTO);
+
         itemRepository.getItems().put(item.getId(), item);
 
         return itemMapper.toDto(item);
@@ -49,6 +50,17 @@ public class ItemService {
 
     public ItemDTO getItemById(String id) {
         return itemMapper.toDto(itemRepository.getItems().get(id));
+    }
+
+
+    public ItemDTO updateItem(String id, ItemDTO itemDTO){
+        Item result = itemRepository.getItems().get(id);
+
+        result.setName(itemDTO.getName());
+        result.setDescription(itemDTO.getDescription());
+        result.setPrice(itemDTO.getPrice());
+        result.setAmount(itemDTO.getAmount());
+        return itemMapper.toDto(result);
     }
 
 }
