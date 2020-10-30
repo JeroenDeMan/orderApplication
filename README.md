@@ -26,7 +26,7 @@ of stories: **Must-Have's** and **Nice-To-Have's**. Start with the Must-Have's, 
 - Story 5 [:heavy_check_mark:]
 - Story 6
 - Story 9
-- Story 10
+- Story 10 [:heavy_check_mark:]
 
 ## Technical requirements for JAVA
 
@@ -135,7 +135,7 @@ As an admin user I want to view all orders that contain items that should be shi
 - Note: item groups of the same order can have a different shipping date, 
 but all items are shipped to the same address.
 
-### Story 10: Item overview
+### Story 10: Item overview [:heavy_check_mark:]
 As an admin user I want to have an overview of items and their stock resupply urgency so I can resupply items in a timely matter.
 - To indicate the urgency of stock resupply we need to use a very business specific urgency indicator.
 - There are 3 different levels for the urgency indicator:
