@@ -2,15 +2,13 @@ package be.switchfully.order.service;
 
 import be.switchfully.order.business.entity.Order;
 import be.switchfully.order.business.repository.OrderRepository;
-import be.switchfully.order.service.dto.CustomerDTO;
-import be.switchfully.order.service.dto.ItemGroupDTO;
-import be.switchfully.order.service.dto.OrderDTO;
-import be.switchfully.order.service.dto.OrderDTOCustomer;
+import be.switchfully.order.service.dto.*;
 import be.switchfully.order.service.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +32,7 @@ public class OrderService {
        String result = (customerDTO.getFirstName() + " " + customerDTO.getLastName());
         return result;
     }
+
 
     private OrderDTO addItemGroupInformation(OrderDTO orderDTO) {
         RestTemplate rtItemGroup = new RestTemplate();
@@ -101,4 +100,6 @@ public class OrderService {
         return result;
 
     }
+
+
 }

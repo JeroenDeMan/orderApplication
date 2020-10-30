@@ -2,7 +2,6 @@ package be.switchfully.order.api;
 
 import be.switchfully.order.service.OrderService;
 
-import be.switchfully.order.service.dto.ItemGroupKeysDTO;
 import be.switchfully.order.service.dto.OrderDTO;
 import be.switchfully.order.service.dto.OrderDTOCustomer;
 import org.springframework.beans.factory.annotation.Autowired;

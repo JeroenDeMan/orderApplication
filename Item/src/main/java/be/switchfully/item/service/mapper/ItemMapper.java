@@ -23,6 +23,7 @@ public class ItemMapper {
         itemDTO.setDescription(item.getDescription());
         itemDTO.setPrice(item.getPrice());
         itemDTO.setAmount(item.getAmount());
+        itemDTO.setResupplyEmergency(item.getResupplyEmergency().toString());
 
         return itemDTO;
     }

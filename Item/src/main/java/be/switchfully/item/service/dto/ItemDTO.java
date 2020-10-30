@@ -10,5 +10,6 @@ public class ItemDTO {
     private String description;
     private double price;
     private int amount;
+    private String resupplyEmergency;
 
 }

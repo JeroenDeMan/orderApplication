@@ -6,10 +6,14 @@ import be.switchfully.item.exceptions.NotAuthorizedException;
 import be.switchfully.item.service.dto.AdminDTO;
 import be.switchfully.item.service.dto.ItemDTO;
 import be.switchfully.item.service.mapper.ItemMapper;
+import be.switchfully.item.util.UrgencyIndicator;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -63,4 +67,16 @@ public class ItemService {
         return itemMapper.toDto(result);
     }
 
+    public List<ItemDTO> getItemsSortedByStockUrgency () {
+        return itemRepository.getItems().values().stream().sorted().map(item -> itemMapper.toDto(item)).collect(Collectors.toList());
+    }
+
+    public List<ItemDTO> getItemsFilterdByResupplyUrgency(UrgencyIndicator value) {
+        return itemRepository.getItems()
+                .values()
+                .stream()
+                .filter(item -> item.getResupplyEmergency().equals(value))
+                .map(item -> itemMapper.toDto(item))
+                .collect(Collectors.toList());
+    }
 }
