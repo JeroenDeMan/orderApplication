@@ -28,11 +28,11 @@ public class OrderService {
         this.orderMapper = orderMapper;
     }
 
-    private OrderDTO addCustomerName (OrderDTO orderDTO) {
+    private String addCustomerName (String id) {
         RestTemplate rtCustomer = new RestTemplate();
-        CustomerDTO customerDTO = rtCustomer.getForObject(COSTUMER_URL + orderDTO.getCustomerId(), CustomerDTO.class);
-       orderDTO.setCustomerName (customerDTO.getFirstName() + " " + customerDTO.getLastName());
-        return orderDTO;
+        CustomerDTO customerDTO = rtCustomer.getForObject(COSTUMER_URL + id, CustomerDTO.class);
+       String result = (customerDTO.getFirstName() + " " + customerDTO.getLastName());
+        return result;
     }
 
     private OrderDTO addItemGroupInformation(OrderDTO orderDTO) {
@@ -55,7 +55,7 @@ public class OrderService {
     }
 
     private OrderDTO addPriceItemGroupsAndCustomer(OrderDTO orderDTO){
-        addCustomerName(orderDTO);
+        orderDTO.setCustomerName(addCustomerName(orderDTO.getCustomerId()));
         addItemGroupInformation(orderDTO);
         calculatePrice(orderDTO);
         return orderDTO;
@@ -93,7 +93,8 @@ public class OrderService {
                 .map(this::addPriceItemGroupsAndCustomer)
                 .collect(Collectors.toList());
 
-        //result.setCustomerName(addCustomerName(id));
+        result.setCustomerId(id);
+        result.setCustomerName(addCustomerName(id));
         result.getOrderList().addAll(orders);
         result.setTotalPrice(orders.stream().mapToDouble(OrderDTO::getTotalPrice ).sum());
 
