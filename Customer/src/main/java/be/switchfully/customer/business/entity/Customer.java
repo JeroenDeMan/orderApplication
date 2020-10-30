@@ -27,7 +27,7 @@ public class Customer {
         isMailAddressValid(mailAddress);
     }
 
-    private void isMailAddressValid(String mailAddress){
+    private void isMailAddressValid(String mailAddress) {
         if (EmailValidation.isEmailValid(mailAddress)) this.mailAddress = mailAddress;
     }
 

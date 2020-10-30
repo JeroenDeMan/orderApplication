@@ -11,7 +11,7 @@ public class AdminMapper {
         return new Admin(adminDTO.getName());
     }
 
-    public AdminDTO toDTO (Admin admin) {
+    public AdminDTO toDTO(Admin admin) {
         AdminDTO adminDTO = new AdminDTO();
         adminDTO.setId(admin.getId());
         adminDTO.setName(admin.getName());

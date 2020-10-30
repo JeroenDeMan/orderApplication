@@ -33,7 +33,7 @@ public class AdminService {
     }
 
     public AdminDTO getAdminById(String id) {
-        if(!adminRepository.getAdmins().containsKey(id)) throw new AdminNotFoundException(id);
+        if (!adminRepository.getAdmins().containsKey(id)) throw new AdminNotFoundException(id);
         return adminMapper.toDTO(adminRepository.getAdmins().get(id));
     }
 }

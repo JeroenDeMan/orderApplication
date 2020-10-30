@@ -25,20 +25,20 @@ public class ItemController {
 
     @GetMapping(path = "/login/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String logIn(@PathVariable String id){
+    public String logIn(@PathVariable String id) {
         return itemService.logIn(id);
     }
 
     @GetMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ItemDTO getItemById(@PathVariable String id){
+    public ItemDTO getItemById(@PathVariable String id) {
         return itemService.getItemById(id);
     }
 
     @GetMapping(path = "/stock", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    private List<ItemDTO> getStockUrgency (@RequestParam (required = false) UrgencyIndicator value) {
-        if(value != null) return itemService.getItemsFilterdByResupplyUrgency(value);
+    private List<ItemDTO> getStockUrgency(@RequestParam(required = false) UrgencyIndicator value) {
+        if (value != null) return itemService.getItemsFilterdByResupplyUrgency(value);
         return itemService.getItemsSortedByStockUrgency();
     }
 

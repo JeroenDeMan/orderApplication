@@ -26,10 +26,10 @@ public class OrderService {
         this.orderMapper = orderMapper;
     }
 
-    private String addCustomerName (String id) {
+    private String addCustomerName(String id) {
         RestTemplate rtCustomer = new RestTemplate();
         CustomerDTO customerDTO = rtCustomer.getForObject(COSTUMER_URL + id, CustomerDTO.class);
-       String result = (customerDTO.getFirstName() + " " + customerDTO.getLastName());
+        String result = (customerDTO.getFirstName() + " " + customerDTO.getLastName());
         return result;
     }
 
@@ -38,8 +38,8 @@ public class OrderService {
         RestTemplate rtItemGroup = new RestTemplate();
         Order order = orderRepository.getOrders().get(orderDTO.getId());
 
-        if(!order.getItemGroups().isEmpty()) {
-            for (String itemGroupId: order.getItemGroups()) {
+        if (!order.getItemGroups().isEmpty()) {
+            for (String itemGroupId : order.getItemGroups()) {
                 orderDTO.getItemGroups().add(rtItemGroup.getForObject(ITEM_GROUP_URL + itemGroupId, ItemGroupDTO.class));
             }
         }
@@ -53,7 +53,7 @@ public class OrderService {
         return orderDTO;
     }
 
-    private OrderDTO addPriceItemGroupsAndCustomer(OrderDTO orderDTO){
+    private OrderDTO addPriceItemGroupsAndCustomer(OrderDTO orderDTO) {
         orderDTO.setCustomerName(addCustomerName(orderDTO.getCustomerId()));
         addItemGroupInformation(orderDTO);
         calculatePrice(orderDTO);
@@ -69,7 +69,7 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    public OrderDTO createOrder (OrderDTO orderDTO) {
+    public OrderDTO createOrder(OrderDTO orderDTO) {
         Order order = orderMapper.toEntity(orderDTO);
         orderRepository.getOrders().put(order.getId(), order);
 
@@ -78,11 +78,11 @@ public class OrderService {
         return addPriceItemGroupsAndCustomer(orderDTOResult);
     }
 
-    public void addGroupItems (String id, List<String> itemGroupKeys) {
+    public void addGroupItems(String id, List<String> itemGroupKeys) {
         orderRepository.getOrders().get(id).getItemGroups().addAll(itemGroupKeys);
     }
 
-    public OrderDTOCustomer getOrdersForSpecificCustomer(String id){
+    public OrderDTOCustomer getOrdersForSpecificCustomer(String id) {
         OrderDTOCustomer result = new OrderDTOCustomer();
 
         List<OrderDTO> orders = orderRepository.getOrders().values()
@@ -95,7 +95,7 @@ public class OrderService {
         result.setCustomerId(id);
         result.setCustomerName(addCustomerName(id));
         result.getOrderList().addAll(orders);
-        result.setTotalPrice(orders.stream().mapToDouble(OrderDTO::getTotalPrice ).sum());
+        result.setTotalPrice(orders.stream().mapToDouble(OrderDTO::getTotalPrice).sum());
 
         return result;
 

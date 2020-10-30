@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Data
-public class Item implements Comparable<Item>{
+public class Item implements Comparable<Item> {
 
     private final String id;
     private String name;

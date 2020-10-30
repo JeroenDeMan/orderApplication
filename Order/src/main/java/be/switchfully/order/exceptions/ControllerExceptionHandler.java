@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(OrderNotFoundException.class)
-    protected void orderNotFoundException (OrderNotFoundException exception, HttpServletResponse response) throws IOException {
+    protected void orderNotFoundException(OrderNotFoundException exception, HttpServletResponse response) throws IOException {
         response.sendError(HttpServletResponse.SC_NOT_FOUND, exception.getMessage());
     }
 

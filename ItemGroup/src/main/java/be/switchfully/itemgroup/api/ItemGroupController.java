@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping (path = "/api/itemGroups")
+@RequestMapping(path = "/api/itemGroups")
 public class ItemGroupController {
 
     private ItemGroupService itemGroupService;
@@ -27,7 +27,7 @@ public class ItemGroupController {
         return itemGroupService.addItemGroup(itemGroupDTO);
     }
 
-    @GetMapping(path = "/{id}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.FOUND)
     public ItemGroupDTO getItemGroupById(@PathVariable String id) {
         return itemGroupService.getItemGroupById(id);

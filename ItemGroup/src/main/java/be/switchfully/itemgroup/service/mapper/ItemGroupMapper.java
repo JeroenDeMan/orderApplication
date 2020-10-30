@@ -9,12 +9,12 @@ import java.time.LocalDate;
 @Component
 public class ItemGroupMapper {
 
-    public ItemGroup toEntity (ItemGroupDTO itemGroupDTO) {
-        return new ItemGroup(itemGroupDTO.getItemId() , itemGroupDTO.getAmount());
+    public ItemGroup toEntity(ItemGroupDTO itemGroupDTO) {
+        return new ItemGroup(itemGroupDTO.getItemId(), itemGroupDTO.getAmount());
 
     }
 
-    public ItemGroupDTO toDTO (ItemGroup itemGroup) {
+    public ItemGroupDTO toDTO(ItemGroup itemGroup) {
         ItemGroupDTO itemGroupDTO = new ItemGroupDTO();
         itemGroupDTO.setGroupId(itemGroup.getGroupId());
         itemGroupDTO.setItemId(itemGroup.getItemId());

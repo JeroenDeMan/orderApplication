@@ -22,11 +22,11 @@ public class ItemGroup {
         this.amount = amount;
     }
 
-    public void itemOutOfStockSetShipping(){
+    public void itemOutOfStockSetShipping() {
         this.shippingDate = LocalDate.now().plusDays(SHIPPING_ITEM_OUT_OF_STOCK);
     }
 
-    public void itemInStockSetShipping(){
+    public void itemInStockSetShipping() {
         this.shippingDate = LocalDate.now().plusDays(SHIPPING_ITEM_IN_STOCK);
     }
 }

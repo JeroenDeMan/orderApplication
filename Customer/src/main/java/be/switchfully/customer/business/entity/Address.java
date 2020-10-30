@@ -19,8 +19,9 @@ public class Address {
         checkPostalCode(postalCode);
     }
 
-    private void checkPostalCode(int postalCode ){
-        if(String.valueOf(postalCode).length() != 4) throw new IllegalArgumentException("Postal code exists of four number");
+    private void checkPostalCode(int postalCode) {
+        if (String.valueOf(postalCode).length() != 4)
+            throw new IllegalArgumentException("Postal code exists of four number");
         this.postalCode = postalCode;
     }
 

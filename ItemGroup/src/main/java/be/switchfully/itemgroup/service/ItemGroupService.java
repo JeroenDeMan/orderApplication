@@ -35,7 +35,7 @@ public class ItemGroupService {
         return itemGroupDTO;
     }
 
-    public ItemGroup setShippingDate (int stockAmount, ItemGroup itemGroup) {
+    public ItemGroup setShippingDate(int stockAmount, ItemGroup itemGroup) {
         if ((stockAmount - itemGroup.getAmount()) > 0) itemGroup.itemInStockSetShipping();
         else itemGroup.itemOutOfStockSetShipping();
 
@@ -59,7 +59,7 @@ public class ItemGroupService {
     }
 
     public ItemGroupDTO getItemGroupById(String id) {
-        if(!itemGroupRepository.getItemGroups().containsKey(id)) throw new ItemGroupNotFoundException(id);
+        if (!itemGroupRepository.getItemGroups().containsKey(id)) throw new ItemGroupNotFoundException(id);
         ItemGroupDTO result = itemGroupMapper.toDTO(itemGroupRepository.getItemGroups().get(id));
         return retrieveItem(result);
     }

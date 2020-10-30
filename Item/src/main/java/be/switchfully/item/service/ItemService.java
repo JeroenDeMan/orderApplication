@@ -57,7 +57,7 @@ public class ItemService {
     }
 
 
-    public ItemDTO updateItem(String id, ItemDTO itemDTO){
+    public ItemDTO updateItem(String id, ItemDTO itemDTO) {
         Item result = itemRepository.getItems().get(id);
 
         result.setName(itemDTO.getName());
@@ -67,7 +67,7 @@ public class ItemService {
         return itemMapper.toDto(result);
     }
 
-    public List<ItemDTO> getItemsSortedByStockUrgency () {
+    public List<ItemDTO> getItemsSortedByStockUrgency() {
         return itemRepository.getItems().values().stream().sorted().map(item -> itemMapper.toDto(item)).collect(Collectors.toList());
     }
 
